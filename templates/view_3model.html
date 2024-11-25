@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Visualiser le modèle 3D</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f2f5; color: #b48d23; }
+        #viewer { width: 100%; height: 100vh; }
+        .menu { display: flex; justify-content: space-between; padding: 10px; background-color: #4a90e2; color: white; }
+        .menu h1 { margin: 0; }
+        .menu select { padding: 5px; font-size: 1rem; }
+        .controls { position: absolute; top: 70px; left: 20px; z-index: 10; }
+        .button { cursor: pointer; padding: 10px; margin: 10px; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
+        .dress, .hoodie { width: 150px; height: 150px; margin: 10px; border: 2px solid transparent; }
+        .dress:hover, .hoodie:hover { border: 2px solid #4a90e2; }
+        #size-input, #submit-button { margin-top: 10px; }
+        #submit-button { padding: 8px 12px; font-size: 1rem; background-color: #6e88a5; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #submit-button:hover { background-color: #6e869f; }
+        .menu-right { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .menu-button {
+            padding: 8px 16px;
+            background-color: #6e8194;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .menu-button:hover {
+            background-color: #6e8294;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Modèle 3D</h1>
+        <div class="menu-right">
+            <button id="customize-button" class="menu-button">Personnaliser l'avatar</button>
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="fr" selected>Français</option>
+            </select>
+        </div>
+    </div>
+    <div id="viewer"></div>
+    <div class="controls">
+        <img src="static/images/dress.PNG" id="dress-image" class="dress" alt="dress" title="Sélectionnez la robe">
+        <img src="static/images/t-shirt.PNG" id="hoodie-image" class="hoodie" alt="hoodie" title="Sélectionnez le hoodie">
+        <input id="size-input" type="text" placeholder="Entrez la taille (ex: M, L)">
+        <button id="submit-button">Soumettre</button>
+    </div>
+
+    <script>
+        // Langue
+        document.getElementById('language-select').addEventListener('change', (event) => {
+            const selectedLang = event.target.value;
+            if (selectedLang === 'en') {
+                document.querySelector('.menu h1').textContent = '3D Model';
+                document.getElementById('size-input').placeholder = 'Enter size (e.g., M, L)';
+                document.getElementById('submit-button').textContent = 'Submit';
+                document.getElementById('customize-button').textContent = 'Customize Avatar';
+            } else {
+                document.querySelector('.menu h1').textContent = 'Modèle 3D';
+                document.getElementById('size-input').placeholder = 'Entrez la taille (ex: M, L)';
+                document.getElementById('submit-button').textContent = 'Soumettre';
+                document.getElementById('customize-button').textContent = 'Personnaliser l\'avatar';
+            }
+        });
+
+        document.getElementById('customize-button').addEventListener('click', () => {
+            window.location.href = '/customize';
+        });
+
+        let avatarMesh, clothMesh;
+        let selectedCloth = null;
+        const sizeInput = document.getElementById('size-input');
+        const submitButton = document.getElementById('submit-button');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            function initThreeJS(vertices, triangles, clothVertices, clothTriangles) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('viewer').innerHTML = "";
+                document.getElementById('viewer').appendChild(renderer.domElement);
+                renderer.setClearColor(0xf0f2f5, 1);
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+                scene.add(ambientLight);
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+                directionalLight.position.set(1, 1, 0).normalize();
+                scene.add(directionalLight);
+
+                const geometry = new THREE.BufferGeometry();
+                geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(vertices.flat()), 3));
+                geometry.setIndex(new THREE.BufferAttribute(new Uint32Array(triangles.flat()), 1));
+                geometry.computeVertexNormals();
+                avatarMesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: 0xE2B781 }));
+                avatarMesh.position.y = -0.4;
+                avatarMesh.scale.set(0.00090, 0.00090, 0.00090);
+                scene.add(avatarMesh);
+
+                if (clothVertices && clothTriangles) {
+                    const clothGeometry = new THREE.BufferGeometry();
+                    clothGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(clothVertices.flat()), 3));
+                    clothGeometry.setIndex(new THREE.BufferAttribute(new Uint32Array(clothTriangles.flat()), 1));
+                    clothGeometry.computeVertexNormals();
+
+                    clothMesh = new THREE.Mesh(clothGeometry, new THREE.MeshStandardMaterial({ color: 0x6e88a5 }));
+                    clothMesh.position.y = -0.7;
+                    clothMesh.position.z = -0.048;
+                    clothMesh.visible = false;
+                    scene.add(clothMesh);
+                }
+
+                const controls = new THREE.OrbitControls(camera, renderer.domElement);
+                camera.position.z = 1.5;
+                controls.update();
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    controls.update();
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                document.querySelectorAll('.dress, .hoodie').forEach(image => {
+                    image.addEventListener('click', () => {
+                        selectedCloth = image.alt.toLowerCase();
+                        sizeInput.style.display = 'block';
+                        submitButton.style.display = 'inline-block';
+
+                        submitButton.addEventListener('click', () => {
+                            const size = sizeInput.value.trim();
+                            if (selectedCloth && size) {
+                                fetch(`/update_cloth`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ cloth: selectedCloth, size: size }),
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        updateClothMesh(data.cloth_vertices, data.cloth_triangles);
+                                    } else {
+                                        alert('Erreur : ' + data.error);
+                                    }
+                                })
+                                .catch(error => console.error('Erreur de mise à jour :', error));
+                            } else {
+                                alert('Sélectionnez un vêtement et une taille');
+                            }
+                        });
+
+                        function updateClothMesh(newVertices, newTriangles) {
+                            const clothGeometry = new THREE.BufferGeometry();
+                            clothGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(newVertices.flat()), 3));
+                            clothGeometry.setIndex(new THREE.BufferAttribute(new Uint32Array(newTriangles.flat()), 1));
+                            clothGeometry.computeVertexNormals();
+
+                            if (clothMesh) scene.remove(clothMesh);
+                            clothMesh = new THREE.Mesh(clothGeometry, new THREE.MeshStandardMaterial({ color: 0x6e88a5 }));
+                            clothMesh.position.y = -0.69;
+                            clothMesh.position.z = -0.0035;
+                            clothMesh.visible = true;
+                            scene.add(clothMesh);
+                        };
+                    });
+                });
+            }
+
+            const verticesData = {{ vertices | tojson }};
+            const trianglesData = {{ triangles | tojson }};
+            const clothVerticesData = {{ cloth_vertices | tojson }};
+            const clothTrianglesData = {{ cloth_triangles | tojson }};
+
+            initThreeJS(verticesData, trianglesData, clothVerticesData, clothTrianglesData);
+        });
+    </script>
+</body>
+</html>
