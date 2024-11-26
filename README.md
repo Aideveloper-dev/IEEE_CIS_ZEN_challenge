@@ -260,9 +260,6 @@ The avatar generation uses a conditional GAN architecture:
    - Separate development/production configs
    - Secure sensitive information
 
-This structure promotes:
-- Modularity
-- Scalability
-- Maintainability
-- Clear separation of concerns
-- Easy navigation and development
+## Here is an image of the customization interface for the 3D personalized avatar, which corresponds to 15 personalized body measurements and includes virtual try-on features. 
+  ![image](https://github.com/user-attachments/assets/4f76e763-717f-4356-9faa-28c6e495fedd)
+
