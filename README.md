@@ -1,7 +1,9 @@
 # 3D Avatar Generator and Customization Platform
 
 A full-stack web application that generates personalized 3D avatars using conditional Generative Adversarial Networks (cGAN) and allows users to customize their avatars with clothing, hair, and other features.
-
+## 3D Personalized Avatar Customization Interface Demo
+Here is an image of the customization interface for the 3D personalized avatar, which corresponds to 15 personalized body measurements and includes virtual try-on features. 
+  ![image](https://github.com/user-attachments/assets/4f76e763-717f-4356-9faa-28c6e495fedd)
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
@@ -260,6 +262,5 @@ The avatar generation uses a conditional GAN architecture:
    - Separate development/production configs
    - Secure sensitive information
 
-## Here is an image of the customization interface for the 3D personalized avatar, which corresponds to 15 personalized body measurements and includes virtual try-on features. 
-  ![image](https://github.com/user-attachments/assets/4f76e763-717f-4356-9faa-28c6e495fedd)
+
 
