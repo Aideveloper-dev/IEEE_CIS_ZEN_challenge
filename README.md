@@ -158,7 +158,11 @@ The trained **cGAN** generates 3D avatars based on user-provided measurements. T
    ```
 3. Set up the database:
       ```bash
-   flask db upgrade
+ >>> from app import create_app
+>>> app = create_app()
+>>> with app.app_context():
+... from app.config import db
+... db.create_all()
    ```
 4. Run the application:
    ```bash
