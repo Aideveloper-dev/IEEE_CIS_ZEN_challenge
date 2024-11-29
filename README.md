@@ -12,7 +12,6 @@ Here is an image of the customization interface for the 3D personalized avatar, 
 - [Installation](#installation)
 - [API Documentation](#api-documentation)
 - [Technologies Used](#technologies-used)
-- [Directory Details](#directory-details)
 
 ## Overview
 
@@ -76,18 +75,6 @@ This platform allows users to generate personalized 3D avatars by inputting thei
 
 
 ## AI Component of the Project: Avatar Generation Using Generative AI
-
-### Deep Learning and GAN Models
-
-#### GAN Architecture
-
-GANs are composed of two neural networks:
-- **Generator:** Creates new data (3D avatars) from input measurements.
-- **Discriminator:** Distinguishes between real (ground truth) and fake (generated) data, providing feedback to improve the generator's output.
-
-The generator and discriminator compete in a **min-max game**, iteratively improving until the generator produces outputs indistinguishable from real data.
-
-
 
 ### Avatar Generation Process
 
