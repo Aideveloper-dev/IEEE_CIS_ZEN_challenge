@@ -76,12 +76,7 @@
                                 <div class="cloth-options">
                                     <div class="cloth-item">
                                         <img src="/static/images/dress.PNG" class="cloth-option" alt="dress" title="Robe">
-                                        <div class="cloth-details">
-                                            <span class="cloth-price">70 DT</span>
-                                            <button class="buy-button" onclick="buyCloth('dress', 29.99)">
-                                                <i class="fas fa-shopping-cart"></i> Acheter
-                                            </button>
-                                        </div>
+
                                         <div class="cloth-customization" style="display: none;">
                                             <select class="size-input">
                                                 <option value="">Taille</option>
@@ -99,6 +94,12 @@
                                                 <div class="color-option cloth-color" data-color="#6c5ce7" style="background-color: #6c5ce7;" title="purple"></div>
                                             </div>
                                             <button class="apply-size">Appliquer</button>
+                                        </div>
+                                        <div class="cloth-details">
+                                            <span class="cloth-price">70 DT</span>
+                                            <button class="buy-button" onclick="buyCloth('dress', 29.99)">
+                                                <i class="fas fa-shopping-cart"></i> Acheter
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,12 +113,7 @@
                                 <div class="cloth-options">
                                     <div class="cloth-item">
                                         <img src="/static/images/skirt.PNG" class="cloth-option" alt="skirt" title="Jupe">
-                                        <div class="cloth-details">
-                                            <span class="cloth-price">35 DT</span>
-                                            <button class="buy-button" onclick="buyCloth('dress', 29.99)">
-                                                <i class="fas fa-shopping-cart"></i> Acheter
-                                            </button>
-                                        </div>
+
                                         <div class="cloth-customization" style="display: none;">
                                             <select class="size-input">
                                                 <option value="">Taille</option>
@@ -135,6 +131,12 @@
                                                 <div class="color-option cloth-color" data-color="#6c5ce7" style="background-color: #6c5ce7;" title="purple"></div>
                                             </div>
                                             <button class="apply-size">Appliquer</button>
+                                        </div>
+                                        <div class="cloth-details">
+                                            <span class="cloth-price">35 DT</span>
+                                            <button class="buy-button" onclick="buyCloth('dress', 29.99)">
+                                                <i class="fas fa-shopping-cart"></i> Acheter
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -156,12 +158,7 @@
                                 <div class="cloth-options">
                                     <div class="cloth-item">
                                         <img src="/static/images/pull.PNG" class="cloth-option" alt="pull" title="Pull">
-                                        <div class="cloth-details">
-                                            <span class="cloth-price">40 DT</span>
-                                            <button class="buy-button" onclick="buyCloth('dress', 29.99)">
-                                                <i class="fas fa-shopping-cart"></i> Acheter
-                                            </button>
-                                        </div>
+
                                         <div class="cloth-customization" style="display: none;">
                                             <select class="size-input">
                                                 <option value="">Taille</option>
@@ -180,6 +177,48 @@
                                             </div>
                                             <button class="apply-size">Appliquer</button>
                                         </div>
+                                        <div class="cloth-details">
+                                            <span class="cloth-price">40 DT</span>
+                                            <button class="buy-button" onclick="buyCloth('dress', 29.99)">
+                                                <i class="fas fa-shopping-cart"></i> Acheter
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Pantalons -->
+                            <div class="subcategory">
+                                <h4 class="subcategory-title">
+                                    <i class="fas fa-male"></i> Pantalons
+                                </h4>
+                                <div class="cloth-options">
+                                    <div class="cloth-item">
+                                        <img src="/static/images/pants.PNG" class="cloth-option" alt="pants" title="Pantalon">
+
+                                        <div class="cloth-customization" style="display: none;">
+                                            <select class="size-input">
+                                                <option value="">Taille</option>
+                                                <option value="XS">XS</option>
+                                                <option value="S">S</option>
+                                                <option value="M">M</option>
+                                                <option value="L">L</option>
+                                                <option value="XL">XL</option>
+                                            </select>
+                                            <div class="cloth-colors">
+                                                <div class="color-option cloth-color" data-color="#6e88a5" style="background-color: #6e88a5;" title="blue"></div>
+                                                <div class="color-option cloth-color" data-color="#d63031" style="background-color: #d63031;" title="red"></div>
+                                                <div class="color-option cloth-color" data-color="#00b894" style="background-color: #00b894;" title="green"></div>
+                                                <div class="color-option cloth-color" data-color="#2d3436" style="background-color: #2d3436;" title="black"></div>
+                                                <div class="color-option cloth-color" data-color="#6c5ce7" style="background-color: #6c5ce7;" title="purple"></div>
+                                            </div>
+                                            <button class="apply-size">Appliquer</button>
+                                        </div>
+                                        <div class="cloth-details">
+                                            <span class="cloth-price">45 DT</span>
+                                            <button class="buy-button" onclick="buyCloth('pants', 45)">
+                                                <i class="fas fa-shopping-cart"></i> Acheter
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -192,10 +231,101 @@
         <div id="debug-info" style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px; font-family: monospace;"></div>
 
         <script>
+            const translations = {
+                fr: {
+                    title: "Personnaliser l'avatar",
+                    skinColor: "Couleur de peau",
+                    hair: "Cheveux",
+                    clothing: "Vêtements",
+                    search: "Rechercher un vêtement...",
+                    reset: "Réinitialiser",
+                    apply: "Appliquer",
+                    size: "Taille",
+                    categories: {
+                        women: "Femme",
+                        men: "Homme"
+                    },
+                    subcategories: {
+                        dresses: "Robes",
+                        skirts: "Jupes",
+                        sweaters: "Pulls",
+                        pants: "Pantalons"
+                    },
+                    colors: {
+                        light: "Claire",
+                        medium: "Moyenne",
+                        olive: "Olive",
+                        brown: "Brune",
+                        dark: "Foncée"
+                    },
+                    clothingColors: {
+                        blue: "Bleu",
+                        red: "Rouge",
+                        green: "Vert",
+                        black: "Noir",
+                        purple: "Violet"
+                    },
+                    clothingTypes: {
+                        dress: "Robe",
+                        skirt: "Jupe",
+                        pull: "Pull",
+                        pants: "Pantalon"
+                    },
+                    buttons: {
+                        buy: "Acheter"
+                    }
+                },
+                en: {
+                    title: "Customize Avatar",
+                    skinColor: "Skin Color",
+                    hair: "Hair",
+                    clothing: "Clothing",
+                    search: "Search for clothing...",
+                    reset: "Reset",
+                    apply: "Apply",
+                    size: "Size",
+                    categories: {
+                        women: "Women",
+                        men: "Men"
+                    },
+                    subcategories: {
+                        dresses: "Dresses",
+                        skirts: "Skirts",
+                        sweaters: "Sweaters",
+                        pants: "Pants"
+                    },
+                    colors: {
+                        light: "Light",
+                        medium: "Medium",
+                        olive: "Olive",
+                        brown: "Brown",
+                        dark: "Dark"
+                    },
+                    clothingColors: {
+                        blue: "Blue",
+                        red: "Red",
+                        green: "Green",
+                        black: "Black",
+                        purple: "Purple"
+                    },
+                    clothingTypes: {
+                        dress: "Dress",
+                        skirt: "Skirt",
+                        pull: "Sweater",
+                        pants: "Pants"
+                    },
+                    buttons: {
+                        buy: "Buy"
+                    }
+                }
+            };
+
             window.avatarData = {{ avatar_data | tojson | safe }};
             let hairMesh = null;
             let clothMesh = null;
             let scene = null;
+            //let pantsMesh = null;
+            //let topMesh = null;
             
             // Debug logging function
             function debugLog(message) {
@@ -325,7 +455,7 @@
 
                                         const scale = 3.0;
                                         currentHairMesh.scale.set(scale, scale, scale);
-                                        currentHairMesh.position.set(0, -0.2, 0);
+                                        currentHairMesh.position.set(0.005, -0.23, -0.001);
                                         currentHairMesh.rotation.set(0, 0, 0);
 
                                         scene.add(currentHairMesh);
@@ -401,11 +531,11 @@
                                     currentHairMesh = new THREE.Mesh(child.geometry, hairMaterial);
                                     
                                     // Position relative to avatar center
-                                    currentHairMesh.scale.set(0.009, 0.009, 0.009);
+                                    currentHairMesh.scale.set(0.0097, 0.0097, 0.0097);
                                     currentHairMesh.position.copy(avatarMesh.position);
-                                    currentHairMesh.position.y += 0.65;
-                                    currentHairMesh.position.x += 0.0029;
-                                    currentHairMesh.position.z -= 0.008; // Offset up from avatar center
+                                    currentHairMesh.position.y += 0.684;
+                                    currentHairMesh.position.x += 0.011;
+                                    currentHairMesh.position.z = 0.0019; // Offset up from avatar center
                                     currentHairMesh.rotation.set(0, 0, 0);
                                     
                                     scene.add(currentHairMesh);
@@ -524,8 +654,8 @@
                             clothMesh = new THREE.Mesh(clothGeometry, clothMaterial);
                             
                             // Position the cloth relative to the avatar
-                            clothMesh.position.set(0, -0.9, -0.0049);
-                            clothMesh.scale.set(0.98, 0.98, 0.98);
+                            clothMesh.position.set(0, -0.92, 0.015);
+                            clothMesh.scale.set(0.992, 0.992, 0.992);
                             
                             scene.add(clothMesh);
                             debugLog('Cloth mesh added successfully with color: ' + clothColor);
@@ -613,7 +743,7 @@
                                     }
 
                                     clothMesh.scale.set(scale, scale, scale);
-                                    clothMesh.position.set(0, 0.22, 0.0039);
+                                    clothMesh.position.set(0.01, 0.24, 0.06);
                                     clothMesh.rotation.set(0, 0, 0);
 
                                     scene.add(clothMesh);
@@ -641,7 +771,7 @@
                     }
 
                     const objLoader = new THREE.OBJLoader();
-                    const modelUrl = `/static/3D_CLOTHING/skirt_${size}.obj`;
+                    const modelUrl = `/static/3D_CLOTHING/skirt_S.obj`;
                     debugLog(`Attempting to load skirt from: ${modelUrl}`);
 
                     objLoader.load(
@@ -679,9 +809,16 @@
                                     clothMesh = new THREE.Mesh(child.geometry, skirtMaterial);
 
                                     // Échelle fixe car la taille est déjà dans le modèle
-                                    const scale = 0.011;
+                                    let scale = 0.011;
+                                    switch(size) {
+                                    case 'XS': scale *= 0.9; break;
+                                    case 'S': scale *= 0.95; break;
+                                    case 'L': scale *= 1.06; break;
+                                    case 'XL': scale *= 1.2; break;
+                                }
+
                                     clothMesh.scale.set(scale, scale, scale);
-                                    clothMesh.position.set(0, -0.03, -0.0049); // Position ajustée pour la jupe
+                                    clothMesh.position.set(0, -0.03, -0.002); // Position ajustée pour la jupe
                                     clothMesh.rotation.set(Math.PI + Math.PI/2, 0, 0);
 
                                     scene.add(clothMesh);
@@ -714,6 +851,9 @@
                                 case 'skirt':
                                     loadSkirtModel(size);
                                     break;
+                                case 'pants':  // Ajouter ce cas pour les pantalons
+                                    loadPantsModel(size);
+                                    break;                                
                                 default:
                                     loadClothModel(clothType, size); // Pour les autres types de vêtements
                             }
@@ -723,7 +863,7 @@
                         }
                     });
                 });
-
+ 
                 // Animation loop
                 function animate() {
                     requestAnimationFrame(animate);
@@ -880,122 +1020,76 @@
             });
 
             // Ajouter cet objet de traduction après les scripts existants
-            const translations = {
-                en: {
-                    title: "Customize Avatar",
-                    skinColor: "Skin Color",
-                    hair: "Hair",
-                    clothing: "Clothing",
-                    size: "Size",
-                    apply: "Apply",
-                    colors: {
-                        light: "Light",
-                        medium: "Medium",
-                        olive: "Olive",
-                        brown: "Brown",
-                        dark: "Dark"
-                    },
-                    clothingColors: {
-                        blue: "Blue",
-                        red: "Red",
-                        green: "Green",
-                        black: "Black",
-                        purple: "Purple"
-                    },
-                    clothingTypes: {
-                        dress: "Dress",
-                        hoodie: "Hoodie",
-                        pull: "Sweater",
-                        skirt: "Skirt"
-                    },
-                    search: "Search for clothing...",
-                    reset: "Reset"
-                },
-                fr: {
-                    title: "Personnaliser l'avatar",
-                    skinColor: "Couleur de peau",
-                    hair: "Cheveux",
-                    clothing: "Vêtements",
-                    size: "Taille",
-                    apply: "Appliquer",
-                    colors: {
-                        light: "Clair",
-                        medium: "Moyen",
-                        olive: "Olive",
-                        brown: "Brun",
-                        dark: "Foncé"
-                    },
-                    clothingColors: {
-                        blue: "Bleu",
-                        red: "Rouge",
-                        green: "Vert",
-                        black: "Noir",
-                        purple: "Violet"
-                    },
-                    clothingTypes: {
-                        dress: "Robe",
-                        hoodie: "Sweat",
-                        pull: "Pull",
-                        skirt: "Jupe"
-                    },
-                    search: "Rechercher un vêtement...",
-                    reset: "Réinitialiser"
-                }
-            };
+
 
             // Ajouter cette fonction pour gérer les traductions
             function updateLanguage(lang) {
-                const elements = {
-                    title: document.querySelector('h1'),
-                    // ... autres éléments
-                };
-
-                // Vérifier chaque élément avant de modifier son contenu
-                if (elements.title && translations[lang] && translations[lang].title) {
-                    elements.title.textContent = translations[lang].title;
-                }
+                // Titre principal
+                document.querySelector('h1').textContent = translations[lang].title;
                 
-                // Mettre à jour les sections
+                // Sections principales
                 document.querySelector('.skin-section h3').textContent = translations[lang].skinColor;
-                document.querySelector('.control-section:nth-child(1) h3').textContent = translations[lang].hair;
-                document.querySelector('.control-section:nth-child(2) h3').textContent = translations[lang].clothing;
+                document.querySelector('.hair-section h3').textContent = translations[lang].hair;
                 
-                // Mettre à jour les tooltips des couleurs de peau
-                document.querySelectorAll('.skin-color').forEach(color => {
-                    const colorKey = color.title.toLowerCase();
-                    color.title = translations[lang].colors[colorKey];
-                });
-                
-                // Mettre à jour les tooltips des couleurs de vêtements
-                document.querySelectorAll('.cloth-color').forEach(color => {
-                    const colorKey = color.title.toLowerCase();
-                    color.title = translations[lang].clothingColors[colorKey];
-                });
-                
-                // Mettre à jour les options de taille
-                document.querySelectorAll('.size-input option').forEach(option => {
-                    if (option.value === "") {
-                        option.textContent = translations[lang].size;
+                // Catégories principales (Femme/Homme)
+                document.querySelectorAll('.category-title').forEach(title => {
+                    if (title.textContent.includes('Femme') || title.textContent.includes('Women')) {
+                        title.innerHTML = `<i class="fas fa-female"></i> ${translations[lang].categories.women}`;
+                    } else if (title.textContent.includes('Homme') || title.textContent.includes('Men')) {
+                        title.innerHTML = `<i class="fas fa-male"></i> ${translations[lang].categories.men}`;
                     }
                 });
-                
-                // Mettre à jour les boutons appliquer
+
+                // Sous-catégories
+                document.querySelectorAll('.subcategory-title').forEach(title => {
+                    if (title.textContent.includes('Robes') || title.textContent.includes('Dresses')) {
+                        title.innerHTML = `<i class="fas fa-dress"></i> ${translations[lang].subcategories.dresses}`;
+                    } else if (title.textContent.includes('Jupes') || title.textContent.includes('Skirts')) {
+                        title.innerHTML = `<i class="fas fa-female"></i> ${translations[lang].subcategories.skirts}`;
+                    } else if (title.textContent.includes('Pulls') || title.textContent.includes('Sweaters')) {
+                        title.innerHTML = `<i class="fas fa-tshirt"></i> ${translations[lang].subcategories.sweaters}`;
+                    } else if (title.textContent.includes('Pantalons') || title.textContent.includes('Pants')) {
+                        title.innerHTML = `<i class="fas fa-male"></i> ${translations[lang].subcategories.pants}`;
+                    }
+                });
+
+                // Boutons d'achat
+                document.querySelectorAll('.buy-button').forEach(button => {
+                    button.innerHTML = `<i class="fas fa-shopping-cart"></i> ${translations[lang].buttons.buy}`;
+                });
+
+                // Bouton de réinitialisation
+                document.getElementById('reset-button').innerHTML = 
+                    `<i class="fas fa-undo"></i> ${translations[lang].reset}`;
+
+                // Boutons Appliquer
                 document.querySelectorAll('.apply-size').forEach(button => {
                     button.textContent = translations[lang].apply;
                 });
-                
-                // Mettre à jour les titres des vêtements
-                document.querySelectorAll('.cloth-option').forEach(cloth => {
-                    const clothKey = cloth.alt;
-                    cloth.title = translations[lang].clothingTypes[clothKey];
-                });
-                
-                // Mettre à jour le placeholder de la recherche
+
+                // Champ de recherche
                 document.getElementById('search-input').placeholder = translations[lang].search;
-                
-                // Mettre à jour le texte du bouton de réinitialisation
-                const resetButton = document.getElementById('reset-button');
-                resetButton.innerHTML = `<i class="fas fa-undo"></i> ${translations[lang].reset}`;
+
+                // Options de taille
+                document.querySelectorAll('.size-input option[value=""]').forEach(option => {
+                    option.textContent = translations[lang].size;
+                });
+
+                // Tooltips des vêtements
+                document.querySelectorAll('.cloth-option').forEach(cloth => {
+                    const type = cloth.alt;
+                    if (translations[lang].clothingTypes[type]) {
+                        cloth.title = translations[lang].clothingTypes[type];
+                    }
+                });
+
+                // Tooltips des couleurs
+                document.querySelectorAll('.color-option').forEach(color => {
+                    const colorKey = color.title.toLowerCase();
+                    if (translations[lang].clothingColors[colorKey]) {
+                        color.title = translations[lang].clothingColors[colorKey];
+                    }
+                });
             }
 
             // Ajouter l'écouteur d'événement pour le sélecteur de langue
@@ -1053,7 +1147,7 @@
                 });
             });
 
-            // Fonction modifi��e pour réinitialiser l'avatar
+            // Fonction modifiée pour réinitialiser l'avatar
             function resetAvatar() {
                 debugLog('Starting avatar reset...');
 
@@ -1301,6 +1395,85 @@
                 console.log('Download button clicked');
                 downloadAvatar();
             };
+
+            // Add this function in your script section before the closing 
+            function loadPantsModel(size) {
+                debugLog('Loading pants model...');
+                
+                if (!scene) {
+                    debugLog('Error: Scene not initialized');
+                    return;
+                }
+
+                const objLoader = new THREE.OBJLoader();
+                const modelUrl = `/static/3D_CLOTHING/pants_S.obj`;
+                debugLog(`Attempting to load pants from: ${modelUrl}`);
+
+                objLoader.load(
+                    modelUrl,
+                    function(object) {
+                        debugLog('Pants model loaded successfully');
+                        
+                        // Remove existing clothing if present
+                        if (clothMesh) {
+                            scene.remove(clothMesh);
+                        }
+
+                        object.traverse(function(child) {
+                            if (child instanceof THREE.Mesh) {
+                                // Get selected color
+                                const selectedColorElement = document.querySelector('.cloth-color.active');
+                                const pantsColor = selectedColorElement ? selectedColorElement.dataset.color : '#6e88a5';
+
+                                const pantsMaterial = new THREE.MeshPhongMaterial({
+                                    color: pantsColor,
+                                    shininess: 5,
+                                    specular: 0x444444,
+                                    side: THREE.DoubleSide,
+                                    transparent: false,
+                                    opacity: 1.0
+                                });
+
+                                // Center geometry
+                                child.geometry.computeBoundingBox();
+                                const bbox = child.geometry.boundingBox;
+                                const center = new THREE.Vector3();
+                                bbox.getCenter(center);
+                                child.geometry.translate(-center.x, -center.y, -center.z);
+
+                                clothMesh = new THREE.Mesh(child.geometry, pantsMaterial);
+
+                                // Adjust scale based on size
+                                let scale = 0.0113;
+                                switch(size) {
+                                    case 'XS': scale *= 0.9; break;
+                                    case 'S': scale *= 0.95; break;
+                                    case 'L': scale *= 1.06; break;
+                                    case 'XL': scale *= 1.2; break;
+                                }
+
+                                clothMesh.scale.set(scale, scale, scale);
+                                clothMesh.position.set(-0.001, -0.3, 0.09); // Adjust position for pants
+                                clothMesh.rotation.set(0, 0, 0);
+
+                                scene.add(clothMesh);
+                                debugLog(`Pants mesh added with color: ${pantsColor}`);
+                            }
+                        });
+                    },
+                    function(xhr) {
+                        debugLog(`Loading progress: ${(xhr.loaded / xhr.total * 100).toFixed(2)}%`);
+                    },
+                    function(error) {
+                        debugLog(`Error loading pants model: ${error.message}`);
+                        console.error('Detailed error:', error);
+                    }
+                );
+            }
+        
+            // Update the translations object with pants translations
+            translations.en.clothingTypes.pants = "Pants";
+            translations.fr.clothingTypes.pants = "Pantalon";
         </script>
     </body>
 </html>
