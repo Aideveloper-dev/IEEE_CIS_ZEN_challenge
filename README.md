@@ -77,10 +77,6 @@ This platform allows users to generate personalized 3D avatars by inputting thei
 
 ## AI Component of the Project: Avatar Generation Using Generative AI
 
-### Overview of Generative AI
-Generative AI is a subset of artificial intelligence that creates new content, such as images, text, or 3D objects. Unlike traditional AI models, which classify or predict based on input data, generative models learn the underlying patterns in data and use that understanding to generate entirely new outputs. This project leverages **Generative Adversarial Networks (GANs)** to create realistic 3D avatars tailored to individual body measurements.
-
-
 ### Deep Learning and GAN Models
 
 #### GAN Architecture
@@ -153,31 +149,6 @@ This project uses a **Conditional GAN (cGAN)**, where the generator and discrimi
 3. **Padding:** Point clouds are padded to a fixed size (10,000 points) for uniform input dimensions during training.
 
 
-
-### Key Components of the Code
-
-#### Architectures
-
-- **Generator and Discriminator:** Feature extraction via fully connected layers.
-- **Activation and Normalization:** **SiLU**, **Tanh**, **BatchNorm**, and **GroupNorm** for stable training.
-
-#### Custom Dataset Class
-
-- Reads measurements and loads corresponding `.obj` files.
-- Constructs a dataset of paired measurements and point clouds for training.
-
-#### Loss Functions
-
-1. **GAN Loss:** Guides adversarial training by penalizing inaccurate predictions.
-2. **Chamfer Distance:** Measures the similarity between real and generated point clouds.
-
-#### Training Loop
-
-- Alternates training between generator and discriminator.
-- Saves checkpoint models every few epochs for reproducibility and later use.
-
-
-
 ### Output
 
 The trained **cGAN** generates 3D avatars based on user-provided measurements. The generated avatars are:
@@ -244,104 +215,6 @@ The trained **cGAN** generates 3D avatars based on user-provided measurements. T
 - Flask-Compress
 - Flask-Login
 - Werkzeug
-
-## Directory Details
-
-#### `/app`
-- Core application logic and routing
-- Organized into modules for better maintainability
-
-#### `/app/routes`
-- **auth.py**: Handles user authentication
-  - Login/logout functionality
-  - User registration
-  - Session management
-- **avatar.py**: Manages avatar generation
-  - Measurement processing
-  - 3D model generation
-  - Avatar customization endpoints
-- **clothing.py**: Controls clothing system
-  - Clothing model loading
-  - Size and color management
-
-#### `/app/utils`
-- **avatar_processing.py**: Core avatar generation logic
-  - Point cloud processing
-  - Mesh generation
-  - Avatar optimization
-- **model_loader.py**: ML model management
-  - Model loading utilities
-  - Inference optimization
-  - GPU management
-
-#### `/app/models`
-- **user.py**: Database schema
-  - User information
-  - Authentication data
-  - Profile settings
-
-#### `/static`
-- Client-side assets and resources
-- Organized by type (JS, CSS, 3D models)
-
-#### `/static/js`
-- Modular JavaScript architecture
-- Separate concerns for maintainability
-- Client-side processing and UI logic
-
-#### `/static/css`
-- Styled components and layouts
-- Responsive design implementation
-- Theme management
-
-#### `/static/models`
-- 3D asset storage
-- Organized by category
-- Optimized for web delivery
-
-#### `/templates`
-- Jinja2 HTML templates
-- Page layouts and structure
-- Dynamic content integration
-
-#### `config.py`
-- Application settings
-- Environment configurations
-- Database connections
-- Security parameters
-
-### Key Features by Directory
-
-1. **Authentication (`/app/routes/auth.py`)**
-   - Secure login system
-   - Password hashing
-   - Session management
-
-2. **Avatar Generation (`/app/routes/avatar.py`)**
-   - Measurement processing
-   - 3D model generation
-   - Customization endpoints
-
-3. **Clothing System (`/app/routes/clothing.py`)**
-   - Model loading
-   - Size management
-   - Color customization
-
-4. **Frontend (`/static/js/`)**
-   - 3D rendering
-   - User interface
-   - Real-time updates
-
-5. **Styling (`/static/css/`)**
-   - Responsive design
-   - Theme management
-   - Component styling
-
-6. **Templates (`/templates/`)**
-   - Page structure
-   - Dynamic content
-   - User interface layout
-
 
 
 
