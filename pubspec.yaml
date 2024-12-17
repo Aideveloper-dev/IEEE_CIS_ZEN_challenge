@@ -1,0 +1,26 @@
+name: new_flutter_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  flutter_3d_controller: ^2.0.2 # Ensure this is the latest version
+  model_viewer_plus: ^1.7.0  # Alternative to flutter_3d_controller
+  cupertino_icons: ^1.0.8
+  #flutter_3d_obj: ^0.0.5 # Add this line for 3D object support
+  #: ^0.13.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
