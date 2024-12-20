@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
-from app.config import init_app, db, login_manager
-from app.models.user import User
+from app2.config import init_app, db, login_manager
+from app2.models.user import User
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -20,10 +20,10 @@ def create_app():
     })
 
     # Register blueprints
-    from app.routes.auth import auth
-    from app.routes.avatar import avatar
-    #from app.routes.clothing import clothing
-    from app.routes.clothing import clothing_bp
+    from app2.routes.auth import auth
+    from app2.routes.avatar import avatar
+    #from app2.routes.clothing import clothing
+    from app2.routes.clothing import clothing_bp
 
     app.register_blueprint(auth)
     app.register_blueprint(avatar, url_prefix='/avatar')
