@@ -1,5 +1,6 @@
 # 3D Avatar Generator and Customization Platform (Zen/CIS-IEEE challenge )
-
+This project is divided into two main parts : a web application and a mobile application. Let's begin with the web application.
+# Web application
 A full-stack web application that generates personalized 3D avatars using conditional Generative Adversarial Networks (cGAN) and allows users to customize their avatars with clothing, hair, and other features.
 ## 3D Personalized Avatar Customization Interface Demo
 Here is an image of the customization interface for the 3D personalized avatar, which corresponds to 15 personalized body measurements and includes virtual try-on features. 
@@ -202,6 +203,22 @@ The trained **cGAN** generates 3D avatars based on user-provided measurements. T
 - Flask-Login
 - Werkzeug
 
+# Mobile application 
+A Flutter and Flask application that generates personalized 3D avatars based on body measurements. The app includes user authentication, measurement input, and 3D avatar visualization features.With the same functionalities as in the web application.
+## Features
+
+- User authentication (login/signup)
+- Body measurement input interface
+- 3D avatar generation based on measurements
+- Avatar visualization
+- Clothing customization options
+
+## Tech Stack
+
+### Frontend
+- Flutter
+- dart:convert for JSON handling
+- http package for API calls
 
 
 
